@@ -1,4 +1,5 @@
-
+//加载环消失
+NProgress.configure({ showSpinner: false });
   //ajaxStart 所有的Ajax开始调用
   $(document).ajaxStart(function() {
     NProgress.start();
@@ -49,7 +50,7 @@
         type:'get',
         url:'/employee/checkRootLogin',
         success:function(info){
-          console.log(info);
+          //console.log(info);
           if(info.success){
 
           }else if(info.error===400){

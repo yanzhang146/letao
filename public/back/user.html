@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
   <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
   <link rel="stylesheet" href="./css/common.css">
 </head>
@@ -16,7 +17,7 @@
   </div>
   <div class="nav">
     <ul>
-      <li><a href="user.html" class="current">
+      <li><a href="user.html">
         <i class="glyphicon glyphicon-user
 "></i>
         <span>用户管理</span>
@@ -54,14 +55,36 @@
     </a>
   </div>
   <div class="container-fluid">
-    <ol class="breadcrumb">
+    <ol class="breadcrumb mb_20">
       <li><a href="#">管理系统</a></li>
       <li class="active">首页</li>
     </ol>
+    <div class="lt_content">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th width="10%">序号</th>
+          <th width="20%">用户名</th>
+          <th width="40%">手机号</th>
+          <th width="15%">状态</th>
+          <th width="15%">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--刨个坑-->
+        </tbody>
+      </table>
+    <!--分页dom结构-->
+      <div class="text-right">
+        <ul id="paginator"></ul>
+      </div>
+
+
+    </div>
   </div>
 </div>
-<!--模态框-->
-<div class="modal fade" tabindex="-1">
+<!--跟新状态模态框-->
+<div class="modal fade" tabindex="-1" id="logoutModal">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -70,16 +93,40 @@
       </div>
       <div class="modal-body">
         <p class="red">
-          <i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗?</p>
+          <i class="glyphicon glyphicon-info-sign"></i>您确定要执行此操作吗?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary" id="logoutBtn">退出</button>
+        <button type="submit" class="btn btn-primary" id="submitBtn">确定</button>
       </div>
+    </div>
+  </div>
+</div>
+<script src="./lib/jquery/jquery.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/echarts/echarts.min.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/user.js"></script>
 
-      <script src="./lib/jquery/jquery.min.js"></script>
-      <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-      <script src="./lib/nprogress/nprogress.js"></script>
-      <script src="./js/common.js"></script>
+<script type="text/html" id="usertmp">
+  {{ each rows v i}}
+    <tr>
+      <td>{{(page-1)*size+(i+1)}}</td>
+      <td>{{ v.username}}</td>
+      <td>{{v.mobile}}</td>
+      <td>{{v.isDelete===1?"正常":"禁用"}}</td>
+      <td data-id="{{v.id}}">
+        {{ if v.isDelete===0}}
+        <button class="btn btn-success text-center">启用</button>
+        {{else}}
+        <button class="btn btn-danger">禁用</button>
+        {{/if}}
+      </td>
+    </tr>
+  {{ /each }}
+</script>
 </body>
 </html>
