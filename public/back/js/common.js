@@ -43,14 +43,21 @@
         }
       })
     })
-    //5、给.lt_aside下的nav里的每个li注册点击事件
-    $(".lt_aside .nav li").each(function(i,v){
-      v.addEventListener("click",function(){
-        console.log($(this));
-       //$(v).siblings().children("a").removeChild("current");
-        $(this).children("a").addClass("current");
+    //5、登陆拦截
+    if(location.href.indexOf("login.html")===-1){
+      $.ajax({
+        type:'get',
+        url:'/employee/checkRootLogin',
+        success:function(info){
+          console.log(info);
+          if(info.success){
 
+          }else if(info.error===400){
+            location.href="login.html";
+          }
+        }
       })
-    })
+    };
+
 
   })
