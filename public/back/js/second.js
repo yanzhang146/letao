@@ -40,7 +40,7 @@ $(function(){
     //请求一级分类名称，渲染下拉菜单
     $.ajax({
       type:'get',
-      url:'/category/querySecondCategoryPaging',
+      url:'/category/queryTopCategoryPaging',
       data:{
         page:1,
         pageSize:100
@@ -56,7 +56,6 @@ $(function(){
 
   //3、通过注册委托事件，给a注册点击事件
   $(".dropdown-menu").on("click","a",function(){
-    console.log("heh");
     //获取被选中的a的值
     var value=$(this).text();
     var id=$(this).data("id");
@@ -128,12 +127,17 @@ $(function(){
       data:$("#form").serialize(),
       success:function(info){
         console.log(info);
+        console.log($("#form").serialize());
         if(info.success){
           //模态框隐藏
           $("#addModal").modal('hide');
           //表单状态重置
           $("#form").data("bootstrapValidator").resetForm(true);
           $("#imgBox img").attr("src","images/none.png");
+          $("#dropdownText").text('请选择一级分类');
+          //重新渲染第一页
+          currentPage=1;
+          render();
         }
       }
     })
