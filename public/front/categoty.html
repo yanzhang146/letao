@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--设置视口-->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./lib/mui/css/mui.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/categoty.css">
+</head>
+<body>
+<div class="lt_container">
+  <div class="lt_header">
+    <a href="#" class="icon_left"><i class="fa fa-home"></i></a>
+    <a href="#" class="icon_right"><i class="fa fa-search"></i></a>
+    <h3 >乐淘云购</h3>
+  </div>
+  <div class="lt_main">
+  <!--左边浮动，右边自适应-->
+    <div class="categoty_left">
+      <!--添加能滚动的容器-->
+      <div class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+          <!--这里放置真实显示的DOM内容-->
+          <ul id="left_content">
+            <!--刨个坑-->
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="categoty_right">
+      <!--添加滚屏-->
+      <div class="mui-scroll-wrapper">
+        <div class="mui-scroll">
+          <ul class="mui-clearfix" id="right_content">
+            <!--刨个坑-->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lt_footer">
+    <ul>
+      <li><a href="index.html"><i class="fa fa-home"></i><p>首页</p></a></li>
+      <li><a class="current" href="categoty.html"><i class="fa fa-bars"></i><p>分类页</p></a></li>
+      <li><a href="index.html"><i class="fa fa-shopping-cart"></i><p>购物车</p></a></li>
+      <li><a href="index.html"><i class="fa fa-user"></i><p>用户</p></a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+<script src="./lib/zepto/zepto.min.js"></script>
+<script src="./lib/mui/js/mui.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/categoty.js"></script>
+
+<!--左侧一级分类模版-->
+<script type="text/html" id="leftTmp">
+  {{ each rows v i}}
+    <li><a data-id="{{v.id}}" href="#" class="{{ i===0?'current':'' }}">{{v.categoryName}}</a></li>
+  {{ /each }}
+</script>
+<!--右侧二级分类模版-->
+<script type="text/html" id="rightTmp">
+  {{each rows v i}}
+    <li>
+      <a href="#" data-id="{{v.id}}">
+        <img src="{{v.brandLogo}}" alt="">
+        <p>{{v.brandName}}</p>
+      </a>
+    </li>
+  {{ /each}}
+</script>
+</body>
+</html>
