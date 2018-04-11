@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--设置视口-->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Document</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./lib/mui/css/mui.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/searchList.css">
+</head>
+<body>
+<div class="lt_container">
+  <div class="lt_header">
+    <a href="javascript:history.go(-1);" class="icon_left"><i class="mui-icon mui-icon-back"></i></a>
+    <h3 >搜索中心</h3>
+  </div>
+  <div class="lt_main">
+    <!--添加区域滚动-->
+    <div class="mui-scroll-wrapper">
+      <div class="mui-scroll">
+        <!--搜索框-->
+        <div class="lt_search">
+          <input type="text" placeholder="请输入搜索关键字">
+          <button class="mui-btn mui-btn-primary">搜索</button>
+        </div>
+        <!--排序-->
+        <div class="lt_sort">
+          <a href="#">上架时间 <i class="fa fa-angle-down"></i></a>
+          <a href="#" class="current" data-type="price">价格<i class="fa fa-angle-down"></i></a>
+          <a href="#" data-type="num">库存<i class="fa fa-angle-down"></i></a>
+          <a href="#">折扣<i class="fa fa-angle-down"></i></a>
+        </div>
+        <!--商品模块-->
+        <div class="lt_product">
+          <!--刨个坑-->
+          <div class="loading"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lt_footer">
+    <ul>
+      <li><a href="index.html"><i class="fa fa-home"></i><p>首页</p></a></li>
+      <li><a href="categoty.html"><i class="fa fa-bars"></i><p>分类页</p></a></li>
+      <li><a href="index.html"><i class="fa fa-shopping-cart"></i><p>购物车</p></a></li>
+      <li><a href="index.html"><i class="fa fa-user"></i><p>用户</p></a></li>
+    </ul>
+  </div>
+</div>
+<script src="./lib/zepto/zepto.min.js"></script>
+<script src="./lib/mui/js/mui.min.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/searchList.js"></script>
+<!--准备模板-->
+<script type="text/html" id="productTmp">
+  {{ each data v i}}
+    <a href="#" class="lt_product_item">
+      <img src="{{v.pic[0].picAddr}}" alt="">
+      <p class="mui-ellipsis-2">{{v.proName}}</p>
+      <p>
+        <span class="price">&yen;{{v.price}}</span>
+        <span class="oldPrice">&yen;{{v.oldPrice}}</span>
+      </p>
+        <button type="button" class="mui-btn mui-btn-primary">立即购买</button>
+    </a>
+  {{ /each }}
+</script>
+</body>
+</html>

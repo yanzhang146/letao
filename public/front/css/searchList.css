@@ -1,0 +1,36 @@
+.lt_sort{
+  padding: 0 10px;
+  background-color: #EEE;
+  overflow: hidden;
+}
+.lt_sort a{
+  float: left;
+  width: 25%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+}
+.lt_sort a.current{
+  color: darkorange;
+}
+.lt_product .loading{
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  top: 200px;
+  border: 1px solid #006699;
+  animation: loading 1s linear infinite;
+  transform: translateX(-50%);
+}
+
+@keyframes loading {
+  from {
+    transform:translateX(-50%) rotate(0deg);
+  }
+  to{
+    transform:translateX(-50%) rotate(360deg);
+  }
+}

@@ -1,0 +1,46 @@
+.category_left{
+  width: 90px;
+  height: 100%;
+  background-color: pink;
+  float: left;
+  position: relative;
+}
+.category_left li{
+  width: 100%;
+
+}
+.category_left li a{
+  display: block;
+  color: #666;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background-color: #E3E4E5;
+}
+.category_left li a.current{
+  border-right: none;
+  background-color: #fff;
+}
+
+.category_right{
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.category_right li{
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+.category_right li a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.category_right li a img{
+  width: 70px;
+  height: 50px;
+  margin: 0 auto;
+}
